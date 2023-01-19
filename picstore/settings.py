@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'taggit',
     'cloudinary',
     'cloudinary_storage',
-    'fjc'
+    'fjc.apps.FjcConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
