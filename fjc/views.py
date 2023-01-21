@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from fjc.models import User,Truck,Accessories,Collection,CollectionImage,Color
-from .serializers import ColorSerializer,TruckSerliazer
+from .serializers import ColorSerializer,TruckSerliazer,AccessoriesSerializer
 
 # Create your views here.
 @api_view(['GET'])
@@ -17,3 +17,8 @@ def GetTruck(request):
     serializer = TruckSerliazer(trucks, many=True)
     return Response(serializer.data)
     
+@api_view(['GET'])
+def GetAccessories(request):
+    acessories = Accessories.objects.all()
+    serializer = AccessoriesSerliazer(trucks, many=True)
+    return Response(serializer.data)
