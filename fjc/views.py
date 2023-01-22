@@ -14,11 +14,17 @@ def GetColors(request):
 @api_view(['GET'])
 def GetTruck(request):
     trucks = Truck.objects.all()
-    serializer = TruckSerliazer(trucks, many=True)
+    serializer = TruckSerializer(trucks, many=True)
     return Response(serializer.data)
     
 @api_view(['GET'])
 def GetAccessories(request):
     acessories = Accessories.objects.all()
-    serializer = AccessoriesSerliazer(trucks, many=True)
+    serializer = AccessoriesSerializer(trucks, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def GetCollection(request):
+    collections = Collection.objects.all()
+    serializer = CollectionsSerializer(collections, many=True)
     return Response(serializer.data)
