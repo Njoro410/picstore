@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Color,Truck,Accessories,Collection
+from .models import Color,Truck,Accessories,Collection,CollectionImage
 
 
 class ColorSerializer(serializers.ModelSerializer):
@@ -8,17 +8,23 @@ class ColorSerializer(serializers.ModelSerializer):
         fields = '__all__'
         
 
-class TruckSerliazer(serializers.ModelSerializer):
+class TruckSerializer(serializers.ModelSerializer):
     class Meta:
         model = Truck
         fields = '__all__'
         
-class AccessoriesSerliazer(serializers.ModelSerializer):
+class AccessoriesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Accessories
         fields = '__all__'
         
-class CollectionsSerliazer(serializers.ModelSerializer):
+class CollectionsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Collection
+        fields = '__all__'
+        
+
+class CollectionsImagesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CollectionImage
         fields = '__all__'
