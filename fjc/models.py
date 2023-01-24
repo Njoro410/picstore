@@ -28,6 +28,7 @@ class Accessories(models.Model):
     uploaded_By = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     image = models.ImageField(upload_to='picsgalore/fj/accessories/', null=True)
     
+    
     def __str__(self):
         return self.name
     
@@ -36,8 +37,9 @@ class Collection(models.Model):
     title = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     uploaded_By = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    image = models.ImageField(null=True)
+    image = models.ImageField(upload_to='picsgalore/fj/collection',null=True)
     tags = TaggableManager()
+    accessories = models.ForeignKey(Accessories, on_delete=models.DO_NOTHING,null=True, blank=True)
     
     def __str__(self):
         return self.title
@@ -45,7 +47,7 @@ class Collection(models.Model):
     
 class CollectionImage(models.Model):
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, blank=True, null=True)
-    image = models.ImageField(upload_to='picsgalore/fj/collection/', null=True)
+    image = models.ImageField(upload_to='picsgalore/fj/collection/more', null=True)
     
     def __str__(self):
         return self.collection.title
