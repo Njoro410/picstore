@@ -29,6 +29,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['picstore-production.up.railway.app']
 
+CSRF_TRUSTED_ORIGINS = ['https://picstore-production.up.railway.app/']
+
 
 # Application definition
 
