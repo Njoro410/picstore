@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-(kzx6cp8fc&@he6(p_$ies)yxf-tmp7a!ml5#2j()nk&*y7x0s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOST = ['*']
+ALLOWED_HOST = ['https://picstore-production.up.railway.app/']
 
 
 # Application definition
