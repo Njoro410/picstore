@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-(kzx6cp8fc&@he6(p_$ies)yxf-tmp7a!ml5#2j()nk&*y7x0s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOST = ['*']
 
 
 # Application definition
@@ -89,12 +89,12 @@ WSGI_APPLICATION = 'picstore.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'SAdgKWKtUctsoTkp34EV',
-        'HOST': 'containers-us-west-191.railway.app',
-        'PORT': '7893',
+        'PASSWORD': 'JviykfxqsNRHTizSS5DX',
+        'HOST': 'containers-us-west-178.railway.app',
+        'PORT': '5753',
     }
 }
 

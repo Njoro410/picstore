@@ -4,16 +4,18 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Truck(models.Model):
-    name = models.CharField(max_length=10, default='FJ Cruiser')
+    title = models.CharField(max_length=10, default='FJ Cruiser',null=True, blank=True)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='picsgalore/fj/truck/', blank=True)
+    image = models.ImageField(upload_to='picstore/fj/truck/', blank=True)
     color = models.ForeignKey('Color', on_delete=models.DO_NOTHING)
     year = models.IntegerField(default=2014, blank=True )
     tags = TaggableManager()
     uploaded_By = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     upload_Date = models.DateTimeField(auto_now_add=True, null=True)
     accessories = models.ForeignKey('Accessories', on_delete=models.DO_NOTHING,null=True, blank=True)
-    status = models.ForeignKey('Status', on_delete=models.DO_NOTHING)
+    status = models.ForeignKey('Status', on_delete=models.DO_NOTHING,default=1)
+    views = models.IntegerField(blank=True, null=True)
+    trail_team = models.BooleanField(default=False, null=True)
     
     def __str__(self):
         return self.name
@@ -26,7 +28,9 @@ class Accessories(models.Model):
     url = models.URLField(max_length=50, blank=True, null=True)
     manufacturer = models.CharField(max_length=50, blank=True, null=True)
     uploaded_By = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    image = models.ImageField(upload_to='picsgalore/fj/accessories/', null=True)
+    image = models.ImageField(upload_to='picstore/fj/accessories/', null=True)
+    status = models.ForeignKey('Status', on_delete=models.DO_NOTHING,default=1)
+    views = models.IntegerField(blank=True, null=True)
     
     
     def __str__(self):
@@ -37,9 +41,11 @@ class Collection(models.Model):
     title = models.CharField(max_length=50, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     uploaded_By = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    image = models.ImageField(upload_to='picsgalore/fj/collection',null=True)
+    image = models.ImageField(upload_to='picstore/fj/collection',null=True)
     tags = TaggableManager()
     accessories = models.ForeignKey(Accessories, on_delete=models.DO_NOTHING,null=True, blank=True)
+    status = models.ForeignKey('Status', on_delete=models.DO_NOTHING,default=1)
+    views = models.IntegerField(blank=True, null=True)
     
     def __str__(self):
         return self.title
@@ -47,7 +53,8 @@ class Collection(models.Model):
     
 class CollectionImage(models.Model):
     collection = models.ForeignKey(Collection, on_delete=models.CASCADE, blank=True, null=True)
-    image = models.ImageField(upload_to='picsgalore/fj/collection/more', null=True)
+    image = models.ImageField(upload_to='picsstore/fj/collection/more', null=True)
+    views = models.IntegerField(blank=True, null=True)
     
     def __str__(self):
         return self.collection.title
