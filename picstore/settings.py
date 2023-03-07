@@ -27,14 +27,15 @@ SECRET_KEY = 'django-insecure-(kzx6cp8fc&@he6(p_$ies)yxf-tmp7a!ml5#2j()nk&*y7x0s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['picstore-production.up.railway.app']
+ALLOWED_HOSTS = ['*']
 
-CSRF_TRUSTED_ORIGINS = ['https://picstore-production.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://picstore-production.up.railway.app']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
